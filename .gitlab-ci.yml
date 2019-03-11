@@ -1,6 +1,3 @@
-variables:
-  DOCKER_HOST: tcp://docker:2375/
-
 services:
   - docker:dind
 
@@ -17,6 +14,8 @@ build_in_shell:
 
 build_in_docker:
   stage: build
+  variables:
+    DOCKER_HOST: tcp://docker:2375/
   script:
     - whoami
     - docker build .
