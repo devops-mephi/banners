@@ -11,6 +11,6 @@ build:
   stage: build
   script:
     - whoami
-    - docker-compose build
+    - docker build
   tags:
     - docker_in_docker
