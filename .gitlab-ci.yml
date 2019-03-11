@@ -1,0 +1,10 @@
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - whoami
+    - docker-compose build
+  tags:
+    - vagrant
