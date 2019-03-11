@@ -7,7 +7,15 @@ services:
 stages:
   - build
 
-build:
+build_in_shell:
+  stage: build
+  script:
+    - whoami
+    - docker build .
+  tags:
+    - vagrant
+
+build_in_docker:
   stage: build
   script:
     - whoami
