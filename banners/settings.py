@@ -76,11 +76,11 @@ WSGI_APPLICATION = 'banners.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mephi',
-        'USER': 'developer',
-        'PASSWORD': '1234',
-        'HOST': 'db',
-        'PORT': '3306',
+        'NAME': os.environ.get('BANNERS_DATABASE_NAME', 'mephi'),
+        'USER':  os.environ.get('BANNERS_DATABASE_USER', 'developer'),
+        'PASSWORD': os.environ.get('BANNERS_DATABASE_PASSWORD', '1234'),
+        'HOST': os.environ.get('BANNERS_DATABASE_HOST', 'db'),
+        'PORT': os.environ.get('BANNERS_DATABASE_PORT', '3306'),
     }
 }
 
@@ -122,3 +122,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TEST_RUNNER = 'xmlrunner.extra.djangotestrunner.XMLTestRunner'
+TEST_OUTPUT_VERBOSE = True
+TEST_OUTPUT_FILE_NAME = "unittest.xml"
+TEST_OUTPUT_DIR = os.environ.get('TEST_OUTPUT_DIR', '/code/')
